@@ -10,6 +10,7 @@
       "client": {
         "use": "@cloudbase/framework-plugin-website",
         "inputs": {
+          "installCommand": "yarn install",
           "buildCommand": "yarn build",
           "outputPath": "app/build",
           "cloudPath": "/todos"
