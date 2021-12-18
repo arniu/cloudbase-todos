@@ -13,9 +13,10 @@ function query(filter = 'active') {
     ? {
         completed: filter === 'completed',
       }
-    : null;
+    : {}; // 不能使用 null
 }
 
 exports.main = async (event, context) => {
-  return db.collection('todos').where(query(event.filter)).get();
+  const res = await db.collection('todos').where(query(event.filter)).get();
+  return res.data;
 };

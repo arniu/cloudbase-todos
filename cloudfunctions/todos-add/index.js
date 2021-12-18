@@ -16,5 +16,6 @@ function newTodos(todos = []) {
 }
 
 exports.main = async (event, context) => {
-  return db.collection('todos').add(newTodos(event.todos));
+  const res = await db.collection('todos').add(newTodos(event.todos));
+  return res.data;
 };
