@@ -14,8 +14,8 @@ let __app__: cloudbase.app.App;
 export function currentApp() {
   if (!__app__) {
     const env = window._tcbEnv ?? {
-      TCB_ENV_ID: process.env.ENV_ID,
-      TCB_REGION: process.env.REGION,
+      TCB_ENV_ID: process.env.REACT_APP_ENV_ID,
+      TCB_REGION: process.env.REACT_APP_REGION,
     };
 
     __app__ = cloudbase.init({

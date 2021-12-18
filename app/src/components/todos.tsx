@@ -10,7 +10,7 @@ function Todos() {
   const [filter, setFilter] = React.useState<Filter>('active');
   const { data, error } = useTodosList(filter);
 
-  if (error) return <div>Failed to load</div>;
+  if (error) return <div>Failed with {error}</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
