@@ -1,4 +1,5 @@
 const cloud = require('@cloudbase/node-sdk');
+const schema = require('./schema');
 
 const app = cloud.init({
   env: cloud.SYMBOL_CURRENT_ENV,
@@ -17,6 +18,10 @@ function query(filter = 'active') {
 }
 
 exports.main = async (event, context) => {
+  if (!schema.validateInput(event)) {
+    throw new Error(schema.validateInput.errors);
+  }
+
   const res = await db.collection('todos').where(query(event.filter)).get();
   return res.data;
 };

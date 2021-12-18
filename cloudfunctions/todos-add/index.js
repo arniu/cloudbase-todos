@@ -1,5 +1,6 @@
 const cloud = require('@cloudbase/node-sdk');
 const uuid = require('uuid');
+const schema = require('./schema');
 
 const app = cloud.init({
   env: cloud.SYMBOL_CURRENT_ENV,
@@ -16,6 +17,12 @@ function newTodos(todos = []) {
 }
 
 exports.main = async (event, context) => {
-  const res = await db.collection('todos').add(newTodos(event.todos));
-  return res.data;
+  if (!schema.validateInput(event)) {
+    throw new Error(schema.validateInput.errors);
+  }
+
+  return db
+    .collection('todos')
+    .add(newTodos(event.todos))
+    .then((res) => res.ids);
 };
