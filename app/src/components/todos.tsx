@@ -7,7 +7,7 @@ import useTodosList from '../hooks/use-todos-list';
 import { Filter, Todo } from '../hooks/types';
 
 function Todos() {
-  const [filter, setFilter] = React.useState<Filter>('all');
+  const [filter, setFilter] = React.useState<Filter>('active');
   const { data, error } = useTodosList(filter);
 
   if (error) return <div>Failed to load</div>;
