@@ -30,12 +30,6 @@
           },
           "functions": [
             {
-              "name": "todos-add"
-            },
-            {
-              "name": "todos-list"
-            },
-            {
               "name": "todos-api"
             }
           ]

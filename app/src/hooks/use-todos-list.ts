@@ -19,8 +19,9 @@ export default function useTodosList() {
 async function listTodos(filter: Filter) {
   const app = currentApp();
   const res = await app.callFunction({
-    name: 'todos-list',
+    name: 'todos-api',
     data: {
+      type: 'list',
       filter,
     },
   });

@@ -34,8 +34,9 @@ function newTodo(todo: string) {
 async function addTodos(todos: string[]) {
   const app = currentApp();
   await app.callFunction({
-    name: 'todos-add',
+    name: 'todos-api',
     data: {
+      type: 'add',
       todos,
     },
   });
