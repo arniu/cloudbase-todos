@@ -1,4 +1,6 @@
-const ajv = require('ajv')();
+const Ajv = require('ajv');
+
+const ajv = new Ajv();
 
 exports.validateInput = ajv.compile({
   type: 'object',
