@@ -4,6 +4,7 @@
   "private": true,
   "description": "Todos types",
   "types": "dist/index.d.ts",
+  "main": "",
   "scripts": {
     "build": "tsc"
   },

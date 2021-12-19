@@ -34,6 +34,9 @@
             },
             {
               "name": "todos-list"
+            },
+            {
+              "name": "todos-api"
             }
           ]
         }
