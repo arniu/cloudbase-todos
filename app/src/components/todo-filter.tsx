@@ -1,19 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
+import useFilter from '../hooks/use-filter';
 import type { Filter } from '../hooks/types';
 
-export interface TodoFilterProps {
-  setFilter: (next: Filter) => void;
-  filter: Filter;
-}
+const FILTERS: Filter[] = ['all', 'active', 'completed'];
 
-function TodoFilter({ filter, setFilter }: TodoFilterProps) {
-  const filters: Filter[] = ['all', 'active', 'completed'];
+function TodoFilter() {
+  const [filter, setFilter] = useFilter();
 
   return (
     <ul className="filters">
-      {filters.map((it) => {
+      {FILTERS.map((it) => {
         const anchor = it === 'all' ? '#/' : `#/${it}`;
 
         return (

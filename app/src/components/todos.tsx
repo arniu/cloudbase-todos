@@ -1,14 +1,12 @@
-import * as React from 'react';
 import TodoAdd from './todo-add';
 import TodoItem from './todo-item';
 import TodoFilter from './todo-filter';
 
 import useTodosList from '../hooks/use-todos-list';
-import { Filter, Todo } from '../hooks/types';
+import { Todo } from '../hooks/types';
 
 function Todos() {
-  const [filter, setFilter] = React.useState<Filter>('active');
-  const { data, error } = useTodosList(filter);
+  const { data, error } = useTodosList();
 
   if (error) return <div>Failed with {error}</div>;
   if (!data) return <div>Loading...</div>;
@@ -23,7 +21,7 @@ function Todos() {
       {data.length > 0 ? renderTodos(data) : null}
 
       <footer className="footer">
-        <TodoFilter filter={filter} setFilter={setFilter} />
+        <TodoFilter />
       </footer>
     </div>
   );

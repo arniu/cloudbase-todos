@@ -1,22 +1,20 @@
 import * as React from 'react';
+import useTodosAdd from '../hooks/use-todos-add';
 
-export interface TodoAddProps {
-  onSubmit?: (title: string) => void;
-}
-
-function TodoAdd({ onSubmit }: TodoAddProps) {
+function TodoAdd() {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const addTodos = useTodosAdd();
   const handleKeyDown = React.useCallback(
-    (e: React.KeyboardEvent) => {
+    async (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' && inputRef.current) {
         const title = inputRef.current.value;
         if (title) {
           inputRef.current.value = '';
-          onSubmit?.(title);
+          await addTodos(title);
         }
       }
     },
-    [onSubmit],
+    [addTodos],
   );
 
   return (
