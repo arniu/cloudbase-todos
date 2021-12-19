@@ -1,6 +1,7 @@
 {
   "version": "2.0",
-  "envId": "hello-9gqm0syb666b2bbf",
+  "envId": "{{env.ENV_ID}}",
+  "region": "{{env.REGION}}",
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
   "functionRoot": "cloudfunctions",
   "framework": {
@@ -9,38 +10,27 @@
       "client": {
         "use": "@cloudbase/framework-plugin-website",
         "inputs": {
-          "buildCommand": "npm run build",
-          "outputPath": "build",
-          "cloudPath": "/todos",
-          "envVariables": {
-            "TODOS_ENV": "{{env.ENV_ID}}"
-          }
+          "installCommand": "yarn install",
+          "buildCommand": "yarn build",
+          "outputPath": "app/build",
+          "cloudPath": "/todos"
         }
       },
       "server": {
         "use": "@cloudbase/framework-plugin-function",
         "inputs": {
           "functionRootPath": "cloudfunctions",
+          "functionDefaultConfig": {
+            "memorySize": 128,
+            "runtime": "Nodejs10.15",
+            "timeout": 5,
+            "aclRule": {
+              "invoke": true
+            }
+          },
           "functions": [
             {
-              "name": "todos-add",
-              "timeout": 5,
-              "envVariables": {},
-              "runtime": "Nodejs10.15",
-              "memory": 256,
-              "aclRule": {
-                "invoke": true
-              }
-            },
-            {
-              "name": "todos-list",
-              "timeout": 5,
-              "envVariables": {},
-              "runtime": "Nodejs10.15",
-              "memory": 256,
-              "aclRule": {
-                "invoke": true
-              }
+              "name": "todos-api"
             }
           ]
         }
@@ -58,6 +48,5 @@
       }
     }
   },
-  "functions": [],
-  "region": "ap-shanghai"
+  "functions": []
 }

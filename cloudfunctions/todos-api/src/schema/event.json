@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "anyOf": [
+    {
+      "$ref": "#/definitions/AddTodos"
+    },
+    {
+      "$ref": "#/definitions/ListTodos"
+    },
+    {
+      "$ref": "#/definitions/RemoveTodos"
+    },
+    {
+      "$ref": "#/definitions/UpdateTodo"
+    }
+  ],
+  "definitions": {
+    "AddTodos": {
+      "description": "Event to add todos",
+      "properties": {
+        "todos": {
+          "description": "Todos to add",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": ["add"],
+          "type": "string"
+        }
+      },
+      "required": ["todos", "type"],
+      "type": "object"
+    },
+    "ListTodos": {
+      "description": "Event to list todos",
+      "properties": {
+        "filter": {
+          "description": "filter",
+          "enum": ["active", "all", "completed"],
+          "type": "string"
+        },
+        "limit": {
+          "default": 20,
+          "description": "page limit",
+          "type": "number"
+        },
+        "page": {
+          "default": 1,
+          "description": "page",
+          "type": "number"
+        },
+        "type": {
+          "enum": ["list"],
+          "type": "string"
+        }
+      },
+      "required": ["type"],
+      "type": "object"
+    },
+    "PickCompleted": {
+      "properties": {
+        "completed": {
+          "type": "boolean"
+        }
+      },
+      "required": ["completed"],
+      "type": "object"
+    },
+    "PickTitle": {
+      "properties": {
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": ["title"],
+      "type": "object"
+    },
+    "RemoveTodos": {
+      "description": "Event to remove todos",
+      "properties": {
+        "todos": {
+          "description": "Todo IDs to remove",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": ["remove"],
+          "type": "string"
+        }
+      },
+      "required": ["todos", "type"],
+      "type": "object"
+    },
+    "UpdateTodo": {
+      "description": "Event to update a todo",
+      "properties": {
+        "todo": {
+          "description": "Todo ID to update",
+          "type": "string"
+        },
+        "type": {
+          "enum": ["update"],
+          "type": "string"
+        },
+        "update": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PickTitle"
+            },
+            {
+              "$ref": "#/definitions/PickCompleted"
+            }
+          ],
+          "description": "Update title or completed"
+        }
+      },
+      "required": ["todo", "type", "update"],
+      "type": "object"
+    }
+  }
+}

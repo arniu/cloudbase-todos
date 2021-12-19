@@ -1,0 +1,15 @@
+{
+  "name": "todos-types",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Todos types",
+  "types": "dist/index.d.ts",
+  "main": "",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "typescript": "^4.5.4"
+  }
+}

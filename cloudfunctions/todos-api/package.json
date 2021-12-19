@@ -1,0 +1,23 @@
+{
+  "name": "todos-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Todos api",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@cloudbase/node-sdk": "^2.7.x",
+    "ajv": "^8.8.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node10": "^1.0.8",
+    "@types/uuid": "^8.3.3",
+    "typescript": "^4.5.4"
+  },
+  "optionalDependencies": {
+    "todos-types": "^1.0.0"
+  }
+}

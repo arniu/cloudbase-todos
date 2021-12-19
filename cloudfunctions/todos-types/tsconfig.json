@@ -1,0 +1,9 @@
+{
+  // https://github.com/tsconfig/bases
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist"
+  }
+}
