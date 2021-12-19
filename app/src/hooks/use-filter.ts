@@ -1,5 +1,6 @@
 import useSWR from 'swr';
-import { Filter } from './types';
+
+import type { Filter } from 'todos-types';
 
 export default function useFilter(initial: Filter = 'active') {
   const { mutate, data = initial } = useSWR<Filter>('filter');

@@ -1,9 +1,9 @@
 import TodoAdd from './todo-add';
 import TodoItem from './todo-item';
 import TodoFilter from './todo-filter';
-
 import useTodosList from '../hooks/use-todos-list';
-import { Todo } from '../hooks/types';
+
+import type { Todo } from 'todos-types';
 
 function Todos() {
   const { data, error } = useTodosList();
@@ -25,18 +25,18 @@ function Todos() {
       </footer>
     </div>
   );
+}
 
-  function renderTodos(todos: Todo[]) {
-    return (
-      <section className="main">
-        <ul className="todo-list">
-          {todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} />
-          ))}
-        </ul>
-      </section>
-    );
-  }
+function renderTodos(todos: Todo[]) {
+  return (
+    <section className="main">
+      <ul className="todo-list">
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 export default Todos;

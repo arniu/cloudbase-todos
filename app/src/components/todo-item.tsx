@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { Todo } from '../hooks/types';
+import type { Todo } from 'todos-types';
 
 export interface TodoItemProps {
   todo: Todo;

@@ -2,7 +2,8 @@ import useSWR from 'swr';
 import { useDebugValue } from 'react';
 import { currentApp } from './app';
 import useFilter from './use-filter';
-import type { Filter, Todo } from './types';
+
+import type { Filter, Todo } from 'todos-types';
 
 export default function useTodosList() {
   const [filter] = useFilter();

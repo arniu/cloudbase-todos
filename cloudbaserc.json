@@ -20,26 +20,20 @@
         "use": "@cloudbase/framework-plugin-function",
         "inputs": {
           "functionRootPath": "cloudfunctions",
+          "functionDefaultConfig": {
+            "memorySize": 128,
+            "runtime": "Nodejs10.15",
+            "timeout": 5,
+            "aclRule": {
+              "invoke": true
+            }
+          },
           "functions": [
             {
-              "name": "todos-add",
-              "timeout": 5,
-              "envVariables": {},
-              "runtime": "Nodejs10.15",
-              "memory": 256,
-              "aclRule": {
-                "invoke": true
-              }
+              "name": "todos-add"
             },
             {
-              "name": "todos-list",
-              "timeout": 5,
-              "envVariables": {},
-              "runtime": "Nodejs10.15",
-              "memory": 256,
-              "aclRule": {
-                "invoke": true
-              }
+              "name": "todos-list"
             }
           ]
         }

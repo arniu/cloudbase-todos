@@ -7,7 +7,7 @@
   "scripts": {},
   "dependencies": {
     "@cloudbase/node-sdk": "^2.7.x",
-    "ajv": "^6.12.6",
+    "ajv": "^8.8.2",
     "uuid": "^8.3.2"
   }
 }
