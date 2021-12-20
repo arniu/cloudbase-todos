@@ -13,7 +13,7 @@
           "installCommand": "yarn install",
           "buildCommand": "yarn build",
           "outputPath": "app/build",
-          "cloudPath": "/todos"
+          "cloudPath": "{{env.CLOUD_PATH}}"
         }
       },
       "server": {
