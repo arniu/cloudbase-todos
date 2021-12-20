@@ -1,6 +1,5 @@
 @import '~todomvc-app-css/index.css';
 
-.filter {
+.filters li a {
   text-transform: uppercase;
-  cursor: pointer;
 }

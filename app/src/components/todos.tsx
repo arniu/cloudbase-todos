@@ -11,7 +11,7 @@ function Todos() {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div>
+    <section className="todoapp">
       <header className="header">
         <h1>Todos</h1>
         <TodoAdd />
@@ -22,7 +22,7 @@ function Todos() {
       <footer className="footer">
         <TodoFilter />
       </footer>
-    </div>
+    </section>
   );
 }
 

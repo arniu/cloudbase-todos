@@ -19,7 +19,7 @@ function TodoFilter() {
             <a
               href={anchor}
               onClick={() => setFilter(it)}
-              className={classNames('filter', { selected: filter === it })}
+              className={classNames({ selected: filter === it })}
             >
               {it}
             </a>
