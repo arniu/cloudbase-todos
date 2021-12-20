@@ -1,12 +1,11 @@
 import TodoAdd from './todo-add';
 import TodoItem from './todo-item';
 import TodoFilter from './todo-filter';
-import useTodosList from '../hooks/use-todos-list';
-
+import useTodos from '../hooks/use-todos';
 import type { Todo } from 'todos-types';
 
 function Todos() {
-  const { data, error } = useTodosList();
+  const { data, error } = useTodos();
 
   if (error) return <div>Failed with {error}</div>;
   if (!data) return <div>Loading...</div>;

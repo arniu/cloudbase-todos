@@ -1,5 +1,7 @@
 import cloudbase from '@cloudbase/js-sdk';
 
+import type { ResponseType, EventType } from 'todos-types';
+
 declare global {
   interface Window {
     _tcbEnv: {
@@ -11,7 +13,7 @@ declare global {
 
 let __app__: cloudbase.app.App;
 
-export function currentApp() {
+function currentApp() {
   if (!__app__) {
     const env = window._tcbEnv ?? {
       TCB_ENV_ID: process.env.REACT_APP_ENV_ID,
@@ -30,3 +32,15 @@ export function currentApp() {
 
   return __app__;
 }
+
+async function call<T extends EventType>(data: T) {
+  const app = currentApp();
+  const res = await app.callFunction({
+    name: 'todos-api',
+    data,
+  });
+
+  return res.result as ResponseType<T>;
+}
+
+export default call;

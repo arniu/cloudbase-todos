@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
+import useTodosToggle from '../hooks/use-todos-toggle';
+import useTodosRemove from '../hooks/use-todos-remove';
 import type { Todo } from 'todos-types';
 
 export interface TodoItemProps {
@@ -9,9 +10,8 @@ export interface TodoItemProps {
 }
 
 function TodoItem({ todo }: TodoItemProps) {
-  function onToggle() {}
-
-  function onDestroy() {}
+  const onToggle = useTodosToggle(todo.id);
+  const onRemove = useTodosRemove(todo.id);
 
   return (
     <li
@@ -27,7 +27,7 @@ function TodoItem({ todo }: TodoItemProps) {
           onChange={onToggle}
         />
         <label>{todo.title}</label>
-        <button className="destroy" onClick={onDestroy} />
+        <button className="destroy" onClick={onRemove} />
       </div>
     </li>
   );

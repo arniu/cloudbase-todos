@@ -1,43 +1,38 @@
-import * as React from 'react';
-import { currentApp } from './app';
-
-import useTodosList from './use-todos-list';
+import React from 'react';
+import call from './api';
+import { useFilterRef, useTodosRef } from './use-refs';
+import type { Todo } from 'todos-types';
 
 export default function useTodosAdd() {
-  const { data = [], mutate, filter } = useTodosList();
+  const todosRef = useTodosRef();
+  const filterRef = useFilterRef();
   return React.useCallback(
-    async (title: string) => {
-      if (filter !== 'completed') {
-        // 立即更新本地数据，但禁用重新验证
-        mutate([...data, newTodo(title)], false);
+    async (...todos: string[]) => {
+      if (todosRef.current) {
+        const { data = [], mutate } = todosRef.current;
+        if (filterRef.current !== 'completed') {
+          mutate([...data, ...newTodos(todos)], false);
+        }
+
+        await call({
+          type: 'add',
+          todos,
+        });
+
+        mutate();
       }
-
-      // 发送请求更新源
-      await addTodos([title]);
-
-      // 触发重新验证（重新请求）以确保本地数据是正确的
-      mutate();
     },
-    [data, filter, mutate],
+    [filterRef, todosRef],
   );
 }
 
-function newTodo(todo: string) {
-  const ts = Date.now();
-  return {
-    id: ts + '',
-    title: todo,
-    completed: false,
-  };
-}
-
-async function addTodos(todos: string[]) {
-  const app = currentApp();
-  await app.callFunction({
-    name: 'todos-api',
-    data: {
-      type: 'add',
-      todos,
-    },
+function newTodos(todos: string[]) {
+  return todos.map<Todo>((todo) => {
+    const ts = Date.now();
+    return {
+      id: ts + '',
+      title: todo,
+      completed: false,
+    };
   });
 }
