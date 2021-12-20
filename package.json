@@ -5,7 +5,7 @@
     "app"
   ],
   "scripts": {
-    "test": "lerna run test",
+    "test": "CI=true lerna run test",
     "build": "lerna run build",
     "clean": "lerna run --parallel clean",
     "start": "lerna run --scope app start",
