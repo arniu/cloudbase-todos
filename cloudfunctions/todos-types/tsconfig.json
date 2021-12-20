@@ -3,6 +3,7 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "include": ["src/**/*"],
   "compilerOptions": {
+    "emitDeclarationOnly": true,
     "declaration": true,
     "outDir": "dist"
   }
