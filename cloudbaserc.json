@@ -3,7 +3,6 @@
   "envId": "{{env.ENV_ID}}",
   "region": "{{env.REGION}}",
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
-  "functionRoot": "cloudfunctions",
   "framework": {
     "name": "todos",
     "plugins": {
@@ -35,6 +34,28 @@
           ]
         }
       },
+      "database": {
+        "use": "@cloudbase/framework-plugin-database",
+        "inputs": {
+          "collections": [
+            {
+              "collectionName": "todos",
+              "createIndexes": [
+                {
+                  "unique": true,
+                  "name": "todos_id_index_",
+                  "keys": [
+                    {
+                      "name": "id",
+                      "direction": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
       "auth": {
         "use": "@cloudbase/framework-plugin-auth",
         "inputs": {
@@ -47,6 +68,5 @@
         }
       }
     }
-  },
-  "functions": []
+  }
 }
