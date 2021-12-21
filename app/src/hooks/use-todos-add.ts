@@ -1,6 +1,7 @@
 import React from 'react';
 import call from './api';
-import { useFilterRef, useTodosRef } from './use-refs';
+import { useTodosRef } from './use-todos';
+import { useFilterRef } from './use-filter';
 import type { Todo } from 'todos-types';
 
 export default function useTodosAdd() {
@@ -26,13 +27,11 @@ export default function useTodosAdd() {
   );
 }
 
-function newTodos(todos: string[]) {
-  return todos.map<Todo>((todo) => {
-    const ts = Date.now();
-    return {
-      id: ts + '',
-      title: todo,
-      completed: false,
-    };
-  });
+function newTodos(todos: string[]): Todo[] {
+  let start = Date.now();
+  return todos.map((todo) => ({
+    id: ++start + '',
+    title: todo,
+    completed: false,
+  }));
 }

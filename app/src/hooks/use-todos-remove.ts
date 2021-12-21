@@ -1,6 +1,6 @@
 import React from 'react';
 import call from './api';
-import { useTodosRef } from './use-refs';
+import { useTodosRef } from './use-todos';
 import type { Todo } from 'todos-types';
 
 export default function useTodosRemove(...todos: string[]) {

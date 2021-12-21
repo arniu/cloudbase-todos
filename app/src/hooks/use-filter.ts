@@ -1,11 +1,15 @@
 import useSWR from 'swr';
-import { useDebugValue } from 'react';
-
+import useBox from './use-box';
 import type { Filter } from 'todos-types';
 
-export default function useFilter(initial: Filter = 'active') {
-  const { mutate, data = initial } = useSWR<Filter>('filter');
-  useDebugValue(data, (filter) => `Filter: ${filter}`);
+const INITIAL: Filter = 'active';
 
-  return [data, mutate] as const;
+export default function useFilter() {
+  const { mutate, data } = useSWR<Filter>('filter');
+  return [data ?? INITIAL, mutate] as const;
+}
+
+export function useFilterRef() {
+  const [filter] = useFilter();
+  return useBox(filter);
 }
