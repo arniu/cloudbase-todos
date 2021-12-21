@@ -1,18 +1,16 @@
 import React from 'react';
 import call from './api';
-import { useTodosRef } from './use-todos';
+import useTodos from './use-todos';
 import type { Todo } from 'todos-types';
 
 export default function useTodosToggle(id: string) {
-  const todosRef = useTodosRef();
+  const { mutate } = useTodos();
   return React.useCallback(async () => {
-    if (todosRef.current) {
-      const { data = [], mutate } = todosRef.current;
+    mutate(async (data = []) => {
       const { current, next } = toggle(data, id);
+      mutate(next, false); // 立即更新本地数据
 
       if (current) {
-        mutate(next, false);
-
         await call({
           type: 'update',
           todo: id,
@@ -20,11 +18,11 @@ export default function useTodosToggle(id: string) {
             completed: current.completed,
           },
         });
-
-        mutate();
       }
-    }
-  }, [id, todosRef]);
+
+      return next;
+    });
+  }, [id, mutate]);
 }
 
 function toggle(data: Todo[], id: string) {

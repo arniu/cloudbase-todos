@@ -1,19 +1,17 @@
 import React from 'react';
 import call from './api';
-import { useTodosRef } from './use-todos';
+import useTodos from './use-todos';
 import type { Todo } from 'todos-types';
 
 export default function useTodosEdit(id: string) {
-  const todosRef = useTodosRef();
+  const { mutate } = useTodos();
   return React.useCallback(
     async (title: string) => {
-      if (todosRef.current) {
-        const { data = [], mutate } = todosRef.current;
+      mutate(async (data = []) => {
         const { current, next } = edit(data, id, title);
+        mutate(next, false); // 立即更新本地数据
 
         if (current) {
-          mutate(next, false);
-
           await call({
             type: 'update',
             todo: id,
@@ -21,12 +19,12 @@ export default function useTodosEdit(id: string) {
               title,
             },
           });
-
-          mutate();
         }
-      }
+
+        return next;
+      });
     },
-    [id, todosRef],
+    [id, mutate],
   );
 }
 

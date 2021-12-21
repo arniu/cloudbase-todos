@@ -1,25 +1,27 @@
 import React from 'react';
 import call from './api';
-import { useTodosRef } from './use-todos';
+import useTodos from './use-todos';
 import type { Todo } from 'todos-types';
 
 export default function useTodosRemove(...todos: string[]) {
-  const todosRef = useTodosRef();
+  const { mutate } = useTodos();
   return React.useCallback(async () => {
-    if (todosRef.current) {
-      const { data = [], mutate } = todosRef.current;
-      mutate(removeTodos(data, todos), false);
+    mutate(async (data = []) => {
+      const next = remove(data, todos);
+      mutate(next, false); // 立即更新本地数据
 
-      await call({
-        type: 'remove',
-        todos,
-      });
+      if (next.length !== data.length) {
+        await call({
+          type: 'remove',
+          todos,
+        });
+      }
 
-      mutate();
-    }
-  }, [todos, todosRef]);
+      return next;
+    });
+  }, [mutate, todos]);
 }
 
-function removeTodos(data: Todo[], todos: string[]) {
+function remove(data: Todo[], todos: string[]) {
   return data.filter((todo) => !todos.includes(todo.id));
 }

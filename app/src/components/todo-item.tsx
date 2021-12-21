@@ -4,9 +4,8 @@ import useTodosToggle from '../hooks/use-todos-toggle';
 import useTodosRemove from '../hooks/use-todos-remove';
 import type { Todo } from 'todos-types';
 
-export interface TodoItemProps {
+interface TodoItemProps {
   todo: Todo;
-  editing?: boolean;
 }
 
 function TodoItem({ todo }: TodoItemProps) {
