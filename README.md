@@ -1,13 +1,5 @@
 # Todos on CloudBase
 
-在腾讯 [CloudBase] 上部署 React 应用，项目特色：
-
-- [Ajv]
-- TypeScript
-- Yarn workspace
-
-[cloudbase]: https://console.cloud.tencent.com/tcb/env
-
 ## 准备
 
 1. 准备环境，确保计费模式为**按量计费**

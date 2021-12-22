@@ -10,14 +10,13 @@
     "clean": "lerna run --parallel clean",
     "start": "lerna run --scope app start",
     "deploy": "tcb framework deploy",
-    "types-to-schema": "sh types-to-schema.sh",
     "postinstall": "patch-package",
     "prettier": "prettier --write",
     "prepare": "husky install"
   },
   "lint-staged": {
     "cloudfunctions/todos-types/src/*.ts": [
-      "yarn types-to-schema"
+      "node scripts/generate-schema.js"
     ],
     "*.{js,ts,tsx,css,scss,md,json}": [
       "prettier --write"
@@ -29,6 +28,7 @@
     "lint-staged": "^11.2.6",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
+    "safe-stable-stringify": "^2.2.0",
     "typescript-json-schema": "^0.52.0"
   }
 }
