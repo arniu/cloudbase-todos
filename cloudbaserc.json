@@ -6,17 +6,17 @@
   "framework": {
     "name": "todos",
     "plugins": {
-      "client": {
+      "app": {
         "use": "@cloudbase/framework-plugin-website",
         "inputs": {
           "outputPath": "app/build",
           "cloudPath": "{{env.CLOUD_PATH}}"
         }
       },
-      "server": {
+      "function": {
         "use": "@cloudbase/framework-plugin-function",
         "inputs": {
-          "functionRootPath": "cloudfunctions",
+          "functionRootPath": "cloud/functions",
           "functionDefaultConfig": {
             "memorySize": 128,
             "runtime": "Nodejs10.15",

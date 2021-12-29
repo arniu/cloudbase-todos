@@ -15,7 +15,7 @@ const compilerOptions = {
   strict: true,
 };
 
-const dir = resolve(__dirname, '../cloudfunctions');
+const dir = resolve(__dirname, '../cloud/functions');
 
 const JSON_SCHEMA_FILES = {
   EventType: resolve(dir, 'todos-api/src/schema/event.json'),

@@ -1,8 +1,8 @@
 {
+  "private": true,
   "name": "todos-api",
   "version": "1.0.0",
-  "private": true,
-  "description": "Todos api",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc"

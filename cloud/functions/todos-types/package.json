@@ -1,8 +1,8 @@
 {
+  "private": true,
   "name": "todos-types",
   "version": "1.0.0",
-  "private": true,
-  "description": "Todos types",
+  "description": "",
   "types": "dist/index.d.ts",
   "main": "",
   "scripts": {
