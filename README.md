@@ -16,7 +16,7 @@
 ## 部署
 
 ```shell
-yarn && yarn deploy
+npm i -ws && npm run deploy
 ```
 
 ## 项目笔记

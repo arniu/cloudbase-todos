@@ -5,10 +5,10 @@
     "app"
   ],
   "scripts": {
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "clean": "lerna run --parallel clean",
-    "start": "lerna run --scope app start",
+    "test": "npm run -ws test",
+    "build": "npm run -ws build",
+    "clean": "npm run -ws clean",
+    "start": "npm run -w app start",
     "deploy": "tcb framework deploy",
     "postinstall": "patch-package",
     "prettier": "prettier --write",
@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "husky": "^7.0.0",
-    "lerna": "^4.0.0",
     "lint-staged": "^11.2.6",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
