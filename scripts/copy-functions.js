@@ -4,17 +4,17 @@ const { resolve } = require('path');
 const CLOUD_DIST = resolve(__dirname, '../cloud/dist');
 const CLOUD_FUNCTIONS = resolve(__dirname, '../cloud/functions');
 
-if (module.name === 'main') {
+if (require.main === module) {
   functionNames().forEach((it) => copyFunction(it));
 }
 
 function functionNames() {
   const rc = require('../cloudbaserc.json');
-  const functions = Object.values(rc.framework.plugins).find(
+  const fn = Object.values(rc.framework.plugins).find(
     (it) => it.use == '@cloudbase/framework-plugin-function',
   );
 
-  return functions.inputs.functions.map((it) => it.name);
+  return fn.inputs.functions.map((it) => it.name);
 }
 
 function copyFunction(name) {
