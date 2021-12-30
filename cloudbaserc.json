@@ -10,13 +10,15 @@
         "use": "@cloudbase/framework-plugin-website",
         "inputs": {
           "outputPath": "app/build",
+          "buildCommand": "npm run build",
+          "installCommand": "npm install -ws",
           "cloudPath": "{{env.CLOUD_PATH}}"
         }
       },
       "function": {
         "use": "@cloudbase/framework-plugin-function",
         "inputs": {
-          "functionRootPath": "cloud/functions",
+          "functionRootPath": "cloud/dist",
           "functionDefaultConfig": {
             "memorySize": 128,
             "runtime": "Nodejs10.15",

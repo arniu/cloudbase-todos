@@ -10,12 +10,13 @@
     "clean": "npm run -ws clean",
     "start": "npm run -w app start",
     "deploy": "tcb framework deploy",
+    "postbuild": "node scripts/copy-functions.js",
     "postinstall": "patch-package",
     "prettier": "prettier --write",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "cloudfunctions/todos-types/src/*.ts": [
+    "cloud/functions/todos-types/src/*.ts": [
       "node scripts/generate-schema.js"
     ],
     "*.{js,ts,tsx,css,scss,md,json}": [
@@ -23,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "fs-extra": "^10.0.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.2.6",
     "patch-package": "^6.4.7",
