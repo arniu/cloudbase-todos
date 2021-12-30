@@ -1,5 +1,5 @@
 import Ajv, { JSONSchemaType } from 'ajv';
-import type { EventType } from 'todos-types';
+import type { EventType } from 'types';
 import schemaEvent from './event.json';
 
 export const ajv = new Ajv();

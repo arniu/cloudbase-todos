@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import useTodosToggle from '../hooks/use-todos-toggle';
 import useTodosRemove from '../hooks/use-todos-remove';
-import type { Todo } from 'todos-types';
+import type { Todo } from 'types';
 
 interface TodoItemProps {
   todo: Todo;

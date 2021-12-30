@@ -1,7 +1,7 @@
 import cloud from '@cloudbase/node-sdk';
 import { v4 as uuid } from 'uuid';
 
-import type { AddTodos, Todo } from 'todos-types';
+import type { AddTodos, Todo } from 'types';
 
 function newTodos(todos: string[]) {
   return todos.map<Todo>((todo) => ({

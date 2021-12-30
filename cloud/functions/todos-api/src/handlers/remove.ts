@@ -1,6 +1,6 @@
 import cloud from '@cloudbase/node-sdk';
 
-import type { RemoveTodos } from 'todos-types';
+import type { RemoveTodos } from 'types';
 
 async function remove(db: cloud.Database.Db, event: RemoveTodos) {
   const _ = db.command;

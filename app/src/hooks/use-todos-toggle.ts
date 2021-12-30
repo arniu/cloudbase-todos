@@ -1,7 +1,7 @@
 import React from 'react';
 import call from './api';
 import useTodos from './use-todos';
-import type { Todo } from 'todos-types';
+import type { Todo } from 'types';
 
 export default function useTodosToggle(id: string) {
   const { mutate } = useTodos();

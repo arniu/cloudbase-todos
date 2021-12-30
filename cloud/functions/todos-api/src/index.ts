@@ -12,7 +12,7 @@ const app = cloud.init({
 
 const db = app.database();
 
-async function main(event: any, context: any) {
+export async function main(event: any, context: any) {
   if (!validateEvent(event)) {
     throw validateEventError();
   }
@@ -30,5 +30,3 @@ async function main(event: any, context: any) {
       throw new Error(`Unknow event: ${event}`);
   }
 }
-
-export default main;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import useFilter from '../hooks/use-filter';
-import type { Filter } from 'todos-types';
+import type { Filter } from 'types';
 
 const FILTERS: Filter[] = ['all', 'active', 'completed'];
 
@@ -13,7 +13,7 @@ function TodoFilter() {
       {FILTERS.map((it) => (
         <li key={it}>
           <a
-            href={`#/${it}`}
+            href={`#${it}`}
             onClick={() => setFilter(it)}
             className={classNames({ selected: filter === it })}
           >
