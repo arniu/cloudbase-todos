@@ -13,7 +13,7 @@ function TodoFilter() {
       {FILTERS.map((it) => (
         <li key={it}>
           <a
-            href={`#/${it}`}
+            href={`#${it}`}
             onClick={() => setFilter(it)}
             className={classNames({ selected: filter === it })}
           >
