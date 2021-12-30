@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "todos-types",
+  "name": "types",
   "version": "1.0.0",
   "description": "",
   "types": "dist/index.d.ts",

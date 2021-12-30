@@ -1,5 +1,5 @@
 import useGlobalState from 'swr';
-import type { Filter } from 'todos-types';
+import type { Filter } from 'types';
 
 const INITIAL: Filter = 'active';
 

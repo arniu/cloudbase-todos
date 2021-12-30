@@ -1,6 +1,6 @@
 import cloud from '@cloudbase/node-sdk';
 
-import type { UpdateTodo } from 'todos-types';
+import type { UpdateTodo } from 'types';
 
 async function update(db: cloud.Database.Db, event: UpdateTodo) {
   const _ = db.command;

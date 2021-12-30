@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "cloud/functions/*",
+    "types",
     "app"
   ],
   "scripts": {
@@ -16,7 +17,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "cloud/functions/todos-types/src/*.ts": [
+    "types/src/*.ts": [
       "node scripts/generate-schema.js"
     ],
     "*.{js,ts,tsx,css,scss,md,json}": [

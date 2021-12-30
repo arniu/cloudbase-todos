@@ -1,6 +1,6 @@
 import cloudbase from '@cloudbase/js-sdk';
 
-import type { ResponseType, EventType } from 'todos-types';
+import type { ResponseType, EventType } from 'types';
 
 declare global {
   interface Window {
