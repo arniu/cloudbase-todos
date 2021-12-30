@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import useFilter from '../hooks/use-filter';
-import type { Filter } from 'todos-types';
+import type { Filter } from 'types';
 
 const FILTERS: Filter[] = ['all', 'active', 'completed'];
 

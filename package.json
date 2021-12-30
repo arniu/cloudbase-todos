@@ -1,8 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "cloud/functions/*",
     "types",
+    "cloud/functions/*",
     "app"
   ],
   "scripts": {
