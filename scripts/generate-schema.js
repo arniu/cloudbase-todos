@@ -3,15 +3,10 @@ const { stringify } = require('safe-stable-stringify');
 const { resolve } = require('path');
 const fs = require('fs');
 
-const settings = {
+const tsconfig = resolve(__dirname, '../types/tsconfig.json');
+const generator = buildGenerator(programFromConfig(tsconfig), {
   required: true,
-};
-
-const program = programFromConfig(
-  resolve(__dirname, '../types/tsconfig.hack.json'),
-);
-
-const generator = buildGenerator(program, settings);
+});
 
 const dir = resolve(__dirname, '../cloud/functions');
 const JSON_SCHEMA_FILES = {

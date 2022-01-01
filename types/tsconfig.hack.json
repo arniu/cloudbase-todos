@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    // HACK: `typescript-json-schema` failed if `emitDeclarationOnly`
-    "emitDeclarationOnly": false
-  }
-}

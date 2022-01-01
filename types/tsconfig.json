@@ -1,9 +1,9 @@
 {
-  // https://github.com/tsconfig/bases
   "extends": "@tsconfig/recommended/tsconfig.json",
   "include": ["src/**/*"],
   "compilerOptions": {
-    "emitDeclarationOnly": true,
+    // `typescript-json-schema` failed if `emitDeclarationOnly` enabled
+    // "emitDeclarationOnly": true,
     "declaration": true,
     "outDir": "dist"
   }
